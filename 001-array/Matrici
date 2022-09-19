@@ -1,0 +1,82 @@
+/* * * * * * * * * * * * * * * *
+*  Golzi Riccardo       4°H     *
+*                               *
+*  15/09/2022           Matrici *
+* * * * * * * * * * * * * * * */                         
+
+// inclusione delle librerie
+
+#include "stdio.h"
+#include "stdlib.h"
+#include "math.h"
+#include "time.h"
+#include "limits.h"
+
+// definione delle costanti 
+
+#define R 10
+#define C 10
+#define D 20
+
+// chiamata delle funzioni 
+
+void caricaRandom (int []); // funzione per caricare il vettore in maniera casuale 
+void caricaManuale (int []); // funzione per caricare il vettore manualmente 
+void CaricaRandom (int [][C]); // funzione per caricare la matrice in maniera casuale 
+void CaricaManuale (int [][C]); // funzione per caricare la matrice manualmente 
+void stampaV (int[]); //funzione per stampare il vettore
+
+int main()
+{
+	int v[D],m[R][C];
+	
+	//caricaRandom (v);
+	//caricaManuale (v);
+	stampaV (v);
+	
+}
+
+// scrittura delle funzioni
+
+void caricaRandom (int v[])
+{
+	int i,a;
+	
+	srand(time(NULL));
+	
+	for(i=0;i<D;i++)
+	{
+		a=rand()%19+1;
+		v[i]=a;
+	}
+	
+}
+
+void caricaManuale (int v[])
+{
+	int i,a;
+	
+	printf("\n inserire venti numeri\n");
+	for(i=0;i<D;i++)
+	
+	{
+		scanf("%d",&a);
+		v[i]=a;
+	}
+}
+
+void CaricaRandom (int m[][C])
+{
+	
+}
+
+void stampaV (int v[]) 
+{
+	int i;
+    printf("\n");
+    for(i=0;i<D;i++)
+    {
+    	printf("%d\t",v[i]);
+	}
+	  printf("\n");
+}
