@@ -1,0 +1,160 @@
+/* * * * * * * * * * * * * * * *
+*  Golzi Riccardo       4°H     *
+*                               *
+*  15/09/2022           Matrici *
+* * * * * * * * * * * * * * * */                         
+
+// inclusione delle librerie
+
+#include "stdio.h"
+#include "stdlib.h"
+#include "math.h"
+#include "time.h"
+#include "limits.h"
+
+// definione delle costanti 
+
+#define R 5
+#define C 5
+#define D 5
+
+// chiamata delle funzioni 
+
+void caricaRandom (int []); // funzione per caricare il vettore in maniera casuale 
+void caricaManuale (int []); // funzione per caricare il vettore manualmente 
+void CaricaRandom (int [][C]); // funzione per caricare la matrice in maniera casuale 
+void CaricaManuale (int [][C]); // funzione per caricare la matrice manualmente 
+void StampaMatrice (int [][C]); //funzione per stampare il vettore
+void BubbleSorte (int [][C]); //funzione per riordinare la matrice
+int InserimentoOrdinato(int []); //funzione per inserire un numero nel vettore che verrà già messo in ordine
+
+int main()
+{
+	int mat[R][C],s;
+
+	printf("\npremere 0 per uscire");
+	printf("\npremere 1 per caricare la matrice in modo casuale");
+	printf("\npremere 2 per caricare la matrice manualmente");
+	printf("\npremere 3 per ricercare un numero");
+	printf("\npremere 4 per ordinare la matrice");
+	printf("\npremere 5 per stampare la matrice\n");
+	scanf("%d",&s);
+
+	do
+	{
+	printf("\npremere 0 per uscire");
+	printf("\npremere 1 per caricare la matrice in modo casuale");
+	printf("\npremere 2 per caricare la matrice manualmente");
+	printf("\npremere 3 per ricercare un numero");
+	printf("\npremere 4 per ordinare la matrice");
+	printf("\npremere 5 per stampare la matrice\n");
+	scanf("%d",&s);
+	switch (s)
+	{
+		case 1: CaricaRandom (mat);
+		break;
+		case 2: CaricaManuale (mat);
+		break;
+	//	case 3: InserimentoOrdinato (mat);
+	//	break;
+		case 4: BubbleSorte (mat);
+		break;
+		case 5: StampaMatrice (mat);
+		break;
+	}
+    }while (s!=0);
+return 0;
+}
+
+// scrittura delle funzioni
+
+void caricaRandom (int v[])
+{
+	int i,a;
+
+	srand(time(NULL));
+
+	for(i=0;i<D;i++)
+	{
+		a=rand()%19+1;
+		v[i]=a;
+	}
+
+}
+
+
+void caricaManuale (int v[])
+{
+	int i,a;
+
+	printf("\n inserire cinque numeri\n");
+	for(i=0;i<D;i++)
+
+	{
+		scanf("%d",&a);
+		v[i]=a;
+	}
+}
+
+
+void CaricaRandom (int m[][C])
+{
+	int i;
+	for(i=0;i<C;i++)
+	{
+		 caricaRandom (m[i]);
+	}
+}
+
+
+void CaricaManuale (int m[][C])
+{
+	int i;
+	for(i=0;i<C;i++)
+	{
+		caricaManuale (m[i]);
+	}
+}
+
+
+void StampaMatrice (int m[][C]) 
+{
+	int i,j;
+    printf("\n");
+    for(i=0;i<R;i++)
+    {
+    	for(j=0;j<C;j++)
+    	{
+    		printf("%d",m[i][j]);
+    		printf("\t");
+		}
+		printf("\n");
+	}
+}
+
+
+void BubbleSorte (int v[])
+{
+	int s,i,j,a;
+	
+	do
+	{
+		s=0;
+		for(i=0;i<D;i++)
+		{
+		
+	    	if (v[i]>v[i+1])
+				{
+				a=v[i];
+				v[i]=v[i+1];
+				v[i+1]=a;
+				s=1;
+				}
+		
+		}
+	}while(s!=1);
+}
+
+
+//int InserimentoOrdinato (int v[])
+
